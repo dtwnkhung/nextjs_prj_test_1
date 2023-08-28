@@ -1,3 +1,77 @@
 {
-  "extends": "next/core-web-vitals"
+    "extends": ["next/core-web-vitals", "prettier"],
+    "plugins": ["simple-import-sort", "prettier"],
+    "rules": {
+        "semi": ["error", "always"],
+        "no-console": "warn",
+        "no-eval": "error",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [
+            2,
+            {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    // Packages `react` related packages come first.
+                    ["^react", "^@?w"],
+                    // Internal packages.
+                    ["^(@|src)(/.*|$)"],
+                    // Side effect imports.
+                    ["^u0000"],
+                    // Parent imports. Put `..` last.
+                    ["^..(?!/?$)", "^../?$"],
+                    // Other relative imports. Put same-folder imports and `.` last.
+                    [
+                        "^./(?=.*/)(?!/?$)",
+                        "^.(?!/?$)",
+                        "^./?$"
+                    ],
+                    // Style imports.
+                    ["^.+.?(css)$"]
+                ]
+            }
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                "arrowParens": "always",
+                "bracketSameLine": false,
+                "bracketSpacing": true,
+                "semi": true,
+                "singleQuote": true,
+                "jsxSingleQuote": false,
+                "quoteProps": "as-needed",
+                "trailingComma": "all",
+                "singleAttributePerLine": false,
+                "htmlWhitespaceSensitivity": "css",
+                "vueIndentScriptAndStyle": false,
+                "proseWrap": "preserve",
+                "insertPragma": false,
+                "printWidth": 120,
+                "requirePragma": false,
+                "useTabs": false,
+                "embeddedLanguageFormatting": "auto",
+                "tabWidth": 4,
+                "no-mixed-spaces-and-tabs": [
+                    "error",
+                    "smart-tabs"
+                ],
+                "no-unused-vars": ["error"]
+            }
+        ]
+    }
 }
