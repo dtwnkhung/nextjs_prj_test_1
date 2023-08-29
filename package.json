@@ -36,11 +36,7 @@
         "lint-staged": "^14.0.1"
     },
     "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx}": [
-            "npm run lint",
-            "npm run format",
-            "git add ."
-        ]
+        "src/**/*.{js,jsx,ts,tsx}": "eslint"
     },
     "husky": {
         "hooks": {
