@@ -8,19 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "lint:fix": "eslint --fix .  --ext .js,.jsx,.ts,.tsx",
-        "lint-staged": {
-          "*.ts": [
-              "npm run lint",
-              "npm run format",
-              "git add ."
-          ],
-          "*.tsx": [
-              "npm run lint",
-              "npm run format",
-              "git add ."
-          ]
-      },
-      "postinstall": "husky install"
+        "postinstall": "husky install",
+        "lint-staged": "lint-staged"
     },
     "dependencies": {
         "@commitlint/cli": "^17.7.1",
@@ -45,5 +34,13 @@
     },
     "devDependencies": {
         "lint-staged": "^14.0.1"
+    },
+    "lint-staged": {
+      "src/**/*.{js,jsx,ts,tsx}": "eslint"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "yarn run lint-staged"
+      }
     }
 }
